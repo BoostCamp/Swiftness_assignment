@@ -15,15 +15,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.alertView))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.openAlertView))
         
         imageView.addGestureRecognizer(tap)
         imageView.isUserInteractionEnabled = true
         
     }
     
-    func alertView() {
-        
+    func openAlertView() {
         let controller = UIAlertController(title: "사진 소스 선택", message: "사진을 가져올 소스를 선택해 주세요",
                                            preferredStyle: UIAlertControllerStyle.actionSheet)
         
@@ -40,8 +39,5 @@ class ViewController: UIViewController {
         self.present(controller, animated: true, completion: nil)
     }
     
-    func pickPhotoLibrary() {
-        
-    }
 }
 
