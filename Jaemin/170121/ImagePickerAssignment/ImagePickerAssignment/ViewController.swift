@@ -29,7 +29,9 @@ class ViewController: UIViewController {
         let photoLibraryAction = UIAlertAction(title: "라이브러리", style: UIAlertActionStyle.default) { action in
             self.pickImageFromPhotoLibrary()
         }
-        let photoAlbumAction = UIAlertAction(title: "사진앨범", style: UIAlertActionStyle.default)
+        let photoAlbumAction = UIAlertAction(title: "사진앨범", style: UIAlertActionStyle.default) { action in
+            self.pickImageFromPhotoAlbum()
+        }
         let cancelAction = UIAlertAction(title: "취소", style: UIAlertActionStyle.cancel) { action in
             self.dismiss(animated: true, completion: nil)
         }
@@ -45,6 +47,15 @@ class ViewController: UIViewController {
         let picker = UIImagePickerController()
         
         picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        
+        self.present(picker, animated: false)
+    }
+    
+    func pickImageFromPhotoAlbum() {
+        let picker = UIImagePickerController()
+        
+        picker.sourceType = .savedPhotosAlbum
         picker.allowsEditing = true
         
         self.present(picker, animated: false)
