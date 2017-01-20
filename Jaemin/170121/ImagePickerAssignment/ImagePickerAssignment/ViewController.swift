@@ -19,10 +19,9 @@ class ViewController: UIViewController {
         
         imageView.addGestureRecognizer(tap)
         imageView.isUserInteractionEnabled = true
-        
     }
     
-    func openAlertView() {
+    func openAlertView() { // imageView를 tap하면 alertView가 나타난다
         let controller = UIAlertController(title: "사진 소스 선택", message: "사진을 가져올 소스를 선택해 주세요",
                                            preferredStyle: UIAlertControllerStyle.actionSheet)
         
