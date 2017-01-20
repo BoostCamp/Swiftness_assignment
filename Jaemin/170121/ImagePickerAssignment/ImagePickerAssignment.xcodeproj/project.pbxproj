@@ -96,6 +96,7 @@
 				TargetAttributes = {
 					850641541E3082CD00CCBBAE = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = KVFUA328CJ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -258,6 +259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KVFUA328CJ;
 				INFOPLIST_FILE = ImagePickerAssignment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaemin.ImagePickerAssignment;
@@ -270,6 +272,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KVFUA328CJ;
 				INFOPLIST_FILE = ImagePickerAssignment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaemin.ImagePickerAssignment;
@@ -297,6 +300,7 @@
 				850641691E3082CD00CCBBAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

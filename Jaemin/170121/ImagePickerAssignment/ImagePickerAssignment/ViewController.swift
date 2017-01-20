@@ -31,12 +31,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let photoAlbumAction = UIAlertAction(title: "사진앨범", style: UIAlertActionStyle.default) { action in
             self.pickImageFromPhotoAlbum()
         }
+        let cameraAction = UIAlertAction(title: "카메라", style: UIAlertActionStyle.default) { action in
+            self.pickImageFromCamera()
+        }
         let cancelAction = UIAlertAction(title: "취소", style: UIAlertActionStyle.cancel) { action in
             self.dismiss(animated: true, completion: nil)
         }
         
         controller.addAction(photoLibraryAction)
         controller.addAction(photoAlbumAction)
+        controller.addAction(cameraAction)
         controller.addAction(cancelAction)
         
         self.present(controller, animated: true, completion: nil)
@@ -66,6 +70,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.present(picker, animated: false)
     }
     
+    func pickImageFromCamera() {
+        let picker = UIImagePickerController()
+        
+        picker.sourceType = .camera
+        picker.allowsEditing = true
+        
+        // delegate 지정
+        picker.delegate = self
+        
+        self.present(picker, animated: false)
+    }
+    
     // ImagePicker에서 이미지를 선택하지 않고 취소했을 때 호출되는 메소드
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: false) {
@@ -82,6 +98,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             // 선택된 이미지를 imageView에 표시
             let image = info[UIImagePickerControllerEditedImage] as? UIImage
             self.imageView.image = image
+            
+            self.imageView.frame = CGRect(x: self.imageView.frame.origin.x, y: self.imageView.frame.origin.y,
+                                     width: (image?.size.width)!, height: (image?.size.height)!)
         }
     }
     
