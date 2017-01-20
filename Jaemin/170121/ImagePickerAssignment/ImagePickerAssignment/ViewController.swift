@@ -7,13 +7,36 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
-
-    @IBOutlet var imageView: UIImageView!
+    
+    let imageView = UIImageView()
+    let imageView2 = UIImageView()
+    
+    var selectedImageView = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.view.addSubview(imageView)
+        self.view.addSubview(imageView2)
+        
+        self.imageView.backgroundColor = UIColor.blue
+        self.imageView2.backgroundColor = UIColor.yellow
+        
+        self.imageView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(self.view).offset(25)
+            make.left.equalTo(self.view).offset(20)
+            make.bottom.equalTo(self.view).offset(-350)
+            make.right.equalTo(self.view).offset(-20)
+        }
+        
+        self.imageView2.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(imageView.snp.bottom).offset(20)
+            make.left.equalTo(self.view).offset(20)
+            make.size.equalTo(self.imageView)
+        }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.openAlertView))
         
