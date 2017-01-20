@@ -98,9 +98,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             // 선택된 이미지를 imageView에 표시
             let image = info[UIImagePickerControllerEditedImage] as? UIImage
             self.imageView.image = image
-            
+            // 사진 크기 조절
             self.imageView.frame = CGRect(x: self.imageView.frame.origin.x, y: self.imageView.frame.origin.y,
                                      width: (image?.size.width)!, height: (image?.size.height)!)
+            
+            if (self.imageView.image != nil) {
+                // 알림창
+                let alert = UIAlertController(title: "", message: "이미지를 성공적으로 가져왔습니다", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .cancel))
+                self.present(alert, animated: true)
+            }
         }
     }
     
