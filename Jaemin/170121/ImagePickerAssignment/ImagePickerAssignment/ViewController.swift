@@ -65,7 +65,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.pickImageFromPhotoLibrary()
         }
         let photoAlbumAction = UIAlertAction(title: "사진앨범", style: UIAlertActionStyle.default) { action in
-            self.pickImageFromPhotoAlbum()
+            self.pickImageFromSavedPhotoAlbum()
         }
         let cameraAction = UIAlertAction(title: "카메라", style: UIAlertActionStyle.default) { action in
             self.pickImageFromCamera()
@@ -94,7 +94,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.present(picker, animated: false)
     }
     
-    func pickImageFromPhotoAlbum() {
+    func pickImageFromSavedPhotoAlbum() {
         let picker = UIImagePickerController()
         
         picker.sourceType = .savedPhotosAlbum
