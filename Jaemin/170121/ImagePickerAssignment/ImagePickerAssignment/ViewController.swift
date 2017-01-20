@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     @IBOutlet var imageView: UIImageView!
     
@@ -48,6 +48,9 @@ class ViewController: UIViewController {
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
         
+        // delegate 지정
+        picker.delegate = self
+        
         self.present(picker, animated: false)
     }
     
@@ -56,6 +59,9 @@ class ViewController: UIViewController {
         
         picker.sourceType = .savedPhotosAlbum
         picker.allowsEditing = true
+        
+        // delegate 지정
+        picker.delegate = self
         
         self.present(picker, animated: false)
     }
