@@ -22,8 +22,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.view.addSubview(imageView)
         self.view.addSubview(imageView2)
         
-        self.imageView.backgroundColor = UIColor.blue
-        self.imageView2.backgroundColor = UIColor.yellow
+        self.imageView.backgroundColor = UIColor.lightGray
+        self.imageView2.backgroundColor = UIColor.orange
         
         self.imageView.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(self.view).offset(25)
