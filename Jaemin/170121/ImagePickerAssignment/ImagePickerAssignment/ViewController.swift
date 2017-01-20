@@ -39,12 +39,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.openAlertView))
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.openAlertView))
         
         imageView.addGestureRecognizer(tap)
         imageView.isUserInteractionEnabled = true
+        imageView.tag = 1
+        
+        imageView2.addGestureRecognizer(tap2)
+        imageView2.isUserInteractionEnabled = true
+        imageView2.tag = 2
     }
     
-    func openAlertView() { // imageView를 tap하면 alertView가 나타난다
+    func openAlertView(sender: UITapGestureRecognizer) { // imageView를 tap하면 alertView가 나타난다
+        
+        let tapLocation = sender.view
+        print(tapLocation?.tag ?? 1) // 1은 default value
+        
+        // 변수에 어떤 이미지뷰가 tap 되었는지 정보를 넣어준다
+        selectedImageView = (tapLocation?.tag)!
+        
         let controller = UIAlertController(title: "사진 소스 선택", message: "사진을 가져올 소스를 선택해 주세요",
                                            preferredStyle: UIAlertControllerStyle.actionSheet)
         
@@ -120,16 +133,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         picker.dismiss(animated: false) { () in
             // 선택된 이미지를 imageView에 표시
             let image = info[UIImagePickerControllerEditedImage] as? UIImage
-            self.imageView.image = image
-            // 사진 크기 조절
-            self.imageView.frame = CGRect(x: self.imageView.frame.origin.x, y: self.imageView.frame.origin.y,
-                                     width: (image?.size.width)!, height: (image?.size.height)!)
             
-            if (self.imageView.image != nil) {
-                // 알림창
+            switch(self.selectedImageView) {
+            case 1:
+                self.imageView.image = image
                 let alert = UIAlertController(title: "", message: "이미지를 성공적으로 가져왔습니다", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .cancel))
                 self.present(alert, animated: true)
+                break
+            case 2:
+                self.imageView2.image = image
+                let alert = UIAlertController(title: "", message: "이미지를 성공적으로 가져왔습니다", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .cancel))
+                self.present(alert, animated: true)
+                break
+            default:
+                let alert = UIAlertController(title: "", message: "이미지를 불러오지 못했습니다", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .cancel))
+                self.present(alert, animated: true)
+                break
             }
         }
     }
