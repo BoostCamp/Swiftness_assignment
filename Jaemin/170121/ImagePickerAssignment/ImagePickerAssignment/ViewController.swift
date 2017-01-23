@@ -28,7 +28,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.imageView.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(self.view).offset(25)
             make.left.equalTo(self.view).offset(20)
-            make.bottom.equalTo(self.view).offset(-350)
+            make.bottom.equalTo(self.view).offset(-350) // 동적으로 기기의 크기를 계산해서 바꾸기
             make.right.equalTo(self.view).offset(-20)
         }
         
@@ -109,7 +109,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func pickImageFromCamera() {
         let picker = UIImagePickerController()
         
-        picker.sourceType = .camera
+        picker.sourceType = .camera // permission 체크 , 카메라를 쓸 수 없는 기기가 있다면 exception 발생
         picker.allowsEditing = true
         
         // delegate 지정
